@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,127 +7,167 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9fafb;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
             color: #333;
         }
-        header {
-            background-color: #2563eb;
-            color: white;
-            padding: 20px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
             text-align: center;
         }
-        main {
-            max-width: 600px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        th {
+            background-color: #0077ff;
+            color: white;
         }
-        h1 {
-            margin-top: 0;
+
+        tr:hover {
+            background-color: #e0f0ff;
+            cursor: pointer;
         }
+
         label {
             display: block;
-            margin-top: 15px;
+            margin-top: 20px;
+            color: #555;
         }
+
         input {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
+            border-radius: 5px;
             border: 1px solid #ccc;
-            border-radius: 8px;
         }
+
         button {
-            background-color: #2563eb;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
             margin-top: 20px;
             width: 100%;
+            padding: 12px;
+            background-color: #0077ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
         }
+
         button:hover {
-            background-color: #1e4ed8;
+            background-color: #005ecc;
         }
+
         .resultado {
-            margin-top: 25px;
-            background-color: #f0f4ff;
+            margin-top: 30px;
+            background-color: #e9ffe9;
             padding: 20px;
-            border-radius: 8px;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            font-size: 14px;
-            color: #888;
+            border-radius: 5px;
+            color: #333;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Calculadora de Financiamento Imobiliário</h1>
-    <p>Descubra o valor da sua parcela</p>
-</header>
+    <div class="container">
+        <h1>Tabela de Imóveis</h1>
+        <p style="text-align:center; color:#666;">Clique em um imóvel para preencher o valor na calculadora.</p>
+        <table id="tabelaImoveis">
+            <thead>
+                <tr>
+                    <th>Unidade</th>
+                    <th>Área Total (m²)</th>
+                    <th>Valor (R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-valor="1432658"><td>2</td><td>988,04</td><td>R$ 1.432.658,00</td></tr>
+                <tr data-valor="1163378.5"><td>5</td><td>802,33</td><td>R$ 1.163.378,50</td></tr>
+                <tr data-valor="1118979.5"><td>6</td><td>771,70</td><td>R$ 1.118.979,50</td></tr>
+                <tr data-valor="1209851"><td>10</td><td>834,38</td><td>R$ 1.209.851,00</td></tr>
+                <tr data-valor="1314367"><td>11</td><td>906,46</td><td>R$ 1.314.367,00</td></tr>
+                <tr data-valor="1299490"><td>13</td><td>896,20</td><td>R$ 1.299.490,00</td></tr>
+                <tr data-valor="1299490"><td>14</td><td>896,20</td><td>R$ 1.299.490,00</td></tr>
+                <tr data-valor="1299490"><td>15</td><td>896,20</td><td>R$ 1.299.490,00</td></tr>
+                <tr data-valor="1224307.5"><td>16</td><td>844,35</td><td>R$ 1.224.307,50</td></tr>
+                <tr data-valor="1215490.5"><td>17</td><td>838,27</td><td>R$ 1.215.490,50</td></tr>
+                <tr data-valor="1149067"><td>18</td><td>792,46</td><td>R$ 1.149.067,00</td></tr>
+            </tbody>
+        </table>
 
-<main>
-    <label>Valor do Imóvel (R$):
-        <input type="number" id="valorImovel" placeholder="Ex.: 300000">
-    </label>
+        <h2>Calculadora de Financiamento</h2>
 
-    <label>Valor da Entrada (R$):
-        <input type="number" id="entrada" placeholder="Ex.: 50000">
-    </label>
+        <label>Valor do imóvel (R$)</label>
+        <input type="number" id="valorImovel" placeholder="Clique na tabela ou digite">
 
-    <label>Taxa de Juros Anual (%):
-        <input type="number" step="0.01" id="taxaJuros" placeholder="Ex.: 9.5">
-    </label>
+        <label>Valor da entrada (R$)</label>
+        <input type="number" id="valorEntrada" placeholder="Ex: 60000">
 
-    <label>Prazo (em anos):
-        <input type="number" id="prazo" placeholder="Ex.: 30">
-    </label>
+        <label>Taxa de juros anual (%)</label>
+        <input type="number" id="taxaJuros" step="0.01" placeholder="Ex: 9">
 
-    <button onclick="calcular()">Calcular Parcela</button>
+        <label>Prazo (anos)</label>
+        <input type="number" id="prazo" placeholder="Ex: 30">
 
-    <div class="resultado" id="resultado"></div>
-</main>
+        <button onclick="calcular()">Calcular Parcelas</button>
 
-<footer>
-    © 2025 - Seu Nome ou Nome do Projeto
-</footer>
+        <div class="resultado" id="resultado"></div>
+    </div>
 
-<script>
-    function calcular() {
-        const valorImovel = parseFloat(document.getElementById('valorImovel').value);
-        const entrada = parseFloat(document.getElementById('entrada').value);
-        const taxaJuros = parseFloat(document.getElementById('taxaJuros').value);
-        const prazo = parseFloat(document.getElementById('prazo').value);
+    <script>
+        const linhas = document.querySelectorAll('#tabelaImoveis tbody tr');
+        linhas.forEach(linha => {
+            linha.addEventListener('click', () => {
+                const valor = linha.getAttribute('data-valor');
+                document.getElementById('valorImovel').value = valor;
+                window.scrollTo({ top: document.getElementById('valorImovel').offsetTop - 100, behavior: 'smooth' });
+            });
+        });
 
-        if (isNaN(valorImovel) || isNaN(entrada) || isNaN(taxaJuros) || isNaN(prazo)) {
-            document.getElementById('resultado').innerHTML = "Por favor, preencha todos os campos corretamente.";
-            return;
+        function calcular() {
+            const valorImovel = parseFloat(document.getElementById('valorImovel').value);
+            const valorEntrada = parseFloat(document.getElementById('valorEntrada').value);
+            const taxaJurosAnual = parseFloat(document.getElementById('taxaJuros').value) / 100;
+            const prazoAnos = parseInt(document.getElementById('prazo').value);
+
+            const valorFinanciado = valorImovel - valorEntrada;
+            const meses = prazoAnos * 12;
+            const taxaMensal = taxaJurosAnual / 12;
+
+            const parcela = (valorFinanciado * taxaMensal) / (1 - Math.pow(1 + taxaMensal, -meses));
+
+            const resultado = document.getElementById('resultado');
+
+            if (isNaN(parcela) || parcela <= 0) {
+                resultado.innerHTML = "Por favor, preencha todos os campos corretamente.";
+            } else {
+                resultado.innerHTML = `
+                    <strong>Valor Financiado:</strong> R$ ${valorFinanciado.toLocaleString('pt-BR', {minimumFractionDigits: 2})}<br>
+                    <strong>Valor da Parcela Mensal:</strong> R$ ${parcela.toLocaleString('pt-BR', {minimumFractionDigits: 2})}<br>
+                    <strong>Prazo:</strong> ${prazoAnos} anos (${meses} meses)
+                `;
+            }
         }
-
-        const valorFinanciado = valorImovel - entrada;
-        const jurosMensal = (taxaJuros / 100) / 12;
-        const numeroParcelas = prazo * 12;
-
-        const parcela = valorFinanciado * (jurosMensal * Math.pow(1 + jurosMensal, numeroParcelas)) / (Math.pow(1 + jurosMensal, numeroParcelas) - 1);
-
-        const resultado = `
-            <h3>Resultado:</h3>
-            <p><strong>Valor Financiado:</strong> R$ ${valorFinanciado.toFixed(2).replace('.', ',')}</p>
-            <p><strong>Quantidade de Parcelas:</strong> ${numeroParcelas} meses</p>
-            <p><strong>Parcela Mensal:</strong> R$ ${parcela.toFixed(2).replace('.', ',')}</p>
-        `;
-
-        document.getElementById('resultado').innerHTML = resultado;
-    }
-</script>
-
+    </script>
 </body>
 </html>
